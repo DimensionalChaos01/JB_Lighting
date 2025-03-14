@@ -43,8 +43,8 @@ public class playermove : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
         _col = GetComponent<CapsuleCollider>();
 
         _gameManager = GameObject.Find("GameManager").GetComponent<gamebehavior>();
@@ -93,10 +93,10 @@ public class playermove : MonoBehaviour
 
         this.transform.Translate(Vector3.right * hinput * Time.deltaTime);
 
-        turn.x += Input.GetAxis("Mouse X");
-        transform.localRotation = Quaternion.Euler(-turn.y, turn.x, 0);
-        turn.y += Input.GetAxis("Mouse Y");
-        transform.localRotation = Quaternion.Euler(-turn.y, turn.x, 0);
+        //turn.x += Input.GetAxis("Mouse X");
+        //transform.localRotation = Quaternion.Euler(-turn.y, turn.x, 0);
+        //turn.y += Input.GetAxis("Mouse Y");
+        //transform.localRotation = Quaternion.Euler(-turn.y, turn.x, 0);
 
         if (Input.GetKey(KeyCode.LeftShift))
         {

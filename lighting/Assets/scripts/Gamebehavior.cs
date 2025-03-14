@@ -11,6 +11,10 @@ public class gamebehavior : MonoBehaviour
     public bool get;
     public bool set;
     public int _jetpack = 0;
+    bool gamehasended = false;
+    public float restartdelay = 1f;
+
+    public GameObject completelevelUI;
 
     public string labeltext = "Collect all 4 items and win your freedom!";
     public int maxItems = 4;
@@ -31,9 +35,9 @@ public class gamebehavior : MonoBehaviour
         get { return _state; }
         set { _state = value; }
     }
-    void Start()
+    private void Start()
     {
-
+        completelevelUI.SetActive(false);
     }
 
     public void Initialize()
@@ -147,9 +151,7 @@ public class gamebehavior : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Box(new Rect(20, 20, 150, 25), "Player Health: " + (_playerhp / 2));
-        GUI.Box(new Rect(20, 50, 150, 25), "Items Collected: " + _itemscollected);
-        GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height - 50, 300, 50), labeltext);
+
 
         if (_jetpack >= 1)
         {
@@ -186,14 +188,9 @@ public class gamebehavior : MonoBehaviour
             }
         }
     }
-
-    public void printlootreport()
+    public void completeLevel()
     {
-        var currentitem = lootstack.Pop();
-        var nextitem = lootstack.Peek();
-        Debug.LogFormat("you got a {0}! You've got a chance of finding a {1} next!", currentitem, nextitem);
-
-
-        Debug.LogFormat("There are {0} random loot items waiting for you!", lootstack.Count);
+        Debug.Log("Level " + SceneManager.GetActiveScene().name + " complete");
+        completelevelUI.SetActive(true);
     }
 }
